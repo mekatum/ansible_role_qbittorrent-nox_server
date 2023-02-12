@@ -1,0 +1,5 @@
+alpine_version: 'v3.17'
+alpine_repo_mirror: 'https://mirror.yandex.ru/mirrors/alpine'
+
+webui_port: ''
+

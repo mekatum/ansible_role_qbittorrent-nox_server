@@ -1,0 +1,13 @@
+---
+- name: Install qbittorrent-nox
+  ansible.builtin.apk:
+    name: qbittorrent-nox
+    update_cache: yes
+    state: present
+
+- name: Install libcap for setcap utility
+  ansible.builtin.apk:
+    name: libcap
+    update_cache: yes
+    state: present
+

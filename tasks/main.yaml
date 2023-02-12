@@ -1,0 +1,8 @@
+---
+- name: Render repos
+  import_tasks: repos.yaml
+- name: Install packages
+  import_tasks: packages.yaml
+- name: Config qBittorrent
+  import_tasks: qbittorrent-nox.yaml
+

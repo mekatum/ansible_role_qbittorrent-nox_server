@@ -1,0 +1,21 @@
+---
+- name: Start service qbittorrent-nox and enable
+  ansible.builtin.service:
+    name: qbittorrent-nox
+    state: started
+    enabled: yes
+
+- name: Allow qbittorrent bind to privileged ports
+  community.general.capabilities:
+    path: /usr/bin/qbittorrent-nox
+    capability: cap_net_bind_service=eip
+    state: present
+  when: ( webui_port | length > 0 ) and ( webui_port | int <= 1024 )
+
+- name: Disallow qbittorrent bind to privileged ports
+  community.general.capabilities:
+    path: /usr/bin/qbittorrent-nox
+    capability: cap_net_bind_service=eip
+    state: absent
+  when: ( webui_port | length == 0 ) or ( webui_port | int > 1024 )
+
